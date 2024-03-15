@@ -30,6 +30,12 @@ struct Color {
     unsigned char b;
 };
 
+class Physics {
+    public:
+        static void CollideBounds() {
+
+        }
+};
 class Circle : public Figure {
     public:
         Center center;
@@ -49,18 +55,19 @@ class Circle : public Figure {
             al_draw_filled_circle(center.x, center.y, radius, al_map_rgb(color.r, color.g, color.b) );
         }
         void Move() {
-            if (center.x > SCREEN_W-radius) {
+            if (center.x > SCREEN_W - radius/2) {
                 velX = -velX;
             }
-            if (center.y > SCREEN_H-radius) {
+            if (center.y > SCREEN_H - radius/2) {
                 velY = -velY;
             }
-            if (center.x < 0+radius) {
+            if (center.x < 0 + radius/2) {
                 velX = -velX;
             }
-            if (center.y < 0+radius) {
+            if (center.y < 0 + radius/2) {
                 velY = -velY;
             }
+            Physics::CollideBounds();
             center.x = center.x + velX;
             center.y = center.y + velY;
         }
