@@ -10,15 +10,11 @@ const int FPS = 60;
 const int SCREEN_W = 640;
 const int SCREEN_H = 480;
 
-class Figure {
-    public:
-        virtual void Draw() = 0;
-        virtual void Move() = 0;
-};
 struct Center {
     double x;
     double y;
 };
+
 struct Color {
     Color(unsigned char pR = 255, unsigned char pG = 255, unsigned char pB = 255) { // Default color = white
         r = pR;
@@ -30,6 +26,19 @@ struct Color {
     unsigned char b;
 };
 
+class Figure {
+    public:
+        virtual void Draw() = 0;
+        virtual void Move() = 0;
+        static Center centerList[]; // For collision purposes
+    protected:
+        Center center;
+        double velX;
+        double velY;
+        double width;
+        double height;
+};
+
 class Physics {
     public:
         static void CollideBounds() {
@@ -37,47 +46,47 @@ class Physics {
         }
 };
 class Circle : public Figure {
+    private:
+        void Reset() {
+            center.x = SCREEN_W/2;
+            center.y = SCREEN_H/2;
+        }
     public:
         Center center;
         Color color;
         Circle(double pRadius, double pVelX, double pVelY, Color pColor) {
             Reset();
-            radius = pRadius;
+            width = pRadius;
             velX = pVelX;
             velY = pVelY;
             color = pColor;
         }
-        void Reset() {
-            center.x = SCREEN_W/2;
-            center.y = SCREEN_H/2;
-        }
         void Draw() {
-            al_draw_filled_circle(center.x, center.y, radius, al_map_rgb(color.r, color.g, color.b) );
+            al_draw_filled_circle(center.x, center.y, width, al_map_rgb(color.r, color.g, color.b) );
         }
         void Move() {
-            if (center.x > SCREEN_W - radius/2) {
+            if (center.x > SCREEN_W - width/2) {
                 velX = -velX;
             }
-            if (center.y > SCREEN_H - radius/2) {
+            if (center.y > SCREEN_H - width/2) {
                 velY = -velY;
             }
-            if (center.x < 0 + radius/2) {
+            if (center.x < 0 + width/2) {
                 velX = -velX;
             }
-            if (center.y < 0 + radius/2) {
+            if (center.y < 0 + width/2) {
                 velY = -velY;
             }
-            Physics::CollideBounds();
             center.x = center.x + velX;
             center.y = center.y + velY;
         }
-
-    private:
-        double velX;
-        double velY;
-        double radius;
 };
 class Square : public Figure {
+    private:
+        void Reset() {
+            center.x = SCREEN_W / 2;
+            center.y = SCREEN_H / 2;
+        }
     public:
         Center center;
         Square(double pwidth, double pheight, double pvelX, double pvelY) {
@@ -94,26 +103,17 @@ class Square : public Figure {
             if (center.x > SCREEN_W - width/2) {
                 velX = -velX;
             }
-            if (center.y > SCREEN_H - height/2) {
+            if (center.y > SCREEN_H - width/2) {
                 velY = -velY;
             }
             if (center.x < 0 + width/2) {
                 velX = -velX;
             }
-            if (center.y < 0 + height/2) {
+            if (center.y < 0 + width/2) {
                 velY = -velY;
             }
             center.x = center.x + velX;
             center.y = center.y + velY;
-        }
-    private:
-        double velX;
-        double velY;
-        double width;
-        double height;
-        void Reset() {
-            center.x = SCREEN_W / 2;
-            center.y = SCREEN_H / 2;
         }
 };
 class Screensaver {
