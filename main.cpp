@@ -29,21 +29,28 @@ struct Color {
 class Figure {
     public:
         virtual void Draw() = 0;
-        virtual void Move() = 0;
-        static Center centerList[]; // For collision purposes
+        virtual void Move() {
+            if (center.x > SCREEN_W - width/2) {
+                velX = -velX;
+            }
+            if (center.y > SCREEN_H - width/2) {
+                velY = -velY;
+            }
+            if (center.x < 0 + width/2) {
+                velX = -velX;
+            }
+            if (center.y < 0 + width/2) {
+                velY = -velY;
+            }
+            center.x = center.x + velX;
+            center.y = center.y + velY;
+        }
     protected:
         Center center;
         double velX;
         double velY;
         double width;
         double height;
-};
-
-class Physics {
-    public:
-        static void CollideBounds() {
-
-        }
 };
 class Circle : public Figure {
     private:
@@ -52,7 +59,6 @@ class Circle : public Figure {
             center.y = SCREEN_H/2;
         }
     public:
-        Center center;
         Color color;
         Circle(double pRadius, double pVelX, double pVelY, Color pColor) {
             Reset();
@@ -64,22 +70,6 @@ class Circle : public Figure {
         void Draw() {
             al_draw_filled_circle(center.x, center.y, width, al_map_rgb(color.r, color.g, color.b) );
         }
-        void Move() {
-            if (center.x > SCREEN_W - width/2) {
-                velX = -velX;
-            }
-            if (center.y > SCREEN_H - width/2) {
-                velY = -velY;
-            }
-            if (center.x < 0 + width/2) {
-                velX = -velX;
-            }
-            if (center.y < 0 + width/2) {
-                velY = -velY;
-            }
-            center.x = center.x + velX;
-            center.y = center.y + velY;
-        }
 };
 class Square : public Figure {
     private:
@@ -88,7 +78,6 @@ class Square : public Figure {
             center.y = SCREEN_H / 2;
         }
     public:
-        Center center;
         Square(double pwidth, double pheight, double pvelX, double pvelY) {
             Reset();
             width = pwidth;
@@ -99,27 +88,9 @@ class Square : public Figure {
         void Draw() {
             al_draw_filled_rectangle(center.x - (width/2), center.y - (height/2), center.x + (width/2), center.y + (height/2), al_map_rgb( 0, 255, 0 ));
         }
-        void Move() {
-            if (center.x > SCREEN_W - width/2) {
-                velX = -velX;
-            }
-            if (center.y > SCREEN_H - width/2) {
-                velY = -velY;
-            }
-            if (center.x < 0 + width/2) {
-                velX = -velX;
-            }
-            if (center.y < 0 + width/2) {
-                velY = -velY;
-            }
-            center.x = center.x + velX;
-            center.y = center.y + velY;
-        }
 };
 class Screensaver {
     public:
-
-
         void Add(Figure* f) {
             
         }
@@ -129,6 +100,7 @@ class Screensaver {
             }
         }
         void Draw() {
+            al_clear_to_color(al_map_rgb(0, 0, 0));
             for (int i = 0; i < 6; i++) {
                 PFigures[i]->Draw();
             }
@@ -152,7 +124,6 @@ void fps() {
 }
 
 void draw() {
-    al_clear_to_color(al_map_rgb(0, 0, 0));
     screensaver.Draw();
 }
 
