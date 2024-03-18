@@ -16,7 +16,7 @@ struct Center {
 };
 
 struct Color {
-    Color(unsigned char pR = 255, unsigned char pG = 255, unsigned char pB = 255) { // Default color = white
+    Color(unsigned char pR = 255, unsigned char pG = 255, unsigned char pB = 255) {
         r = pR;
         g = pG;
         b = pB;
@@ -25,25 +25,30 @@ struct Color {
     unsigned char g;
     unsigned char b;
 };
-
+struct Physics {
+    static Center CollideBounds(double px, double py, double pvelX, double pvelY, double pwidth, double pheight) { // Returns desirable velocity
+        Center pcenter;
+        pcenter.x = pvelX;
+        pcenter.y = pvelY;
+        if (px > SCREEN_W - pwidth/2 || px < 0 + pwidth/2) {
+            pcenter.x = -pvelX;
+        }
+        if (py > SCREEN_H - pwidth/2 || py < 0 + pwidth/2) {
+            pcenter.y = -pvelY;
+        }
+        return pcenter;
+    }
+};
 class Figure {
     public:
         virtual void Draw() = 0;
         virtual void Move() {
-            if (center.x > SCREEN_W - width/2) {
-                velX = -velX;
-            }
-            if (center.y > SCREEN_H - width/2) {
-                velY = -velY;
-            }
-            if (center.x < 0 + width/2) {
-                velX = -velX;
-            }
-            if (center.y < 0 + width/2) {
-                velY = -velY;
-            }
-            center.x = center.x + velX;
-            center.y = center.y + velY;
+            centerVel = Physics::CollideBounds(center.x, center.y, velX, velY, width, height);
+
+
+            velX = centerVel.x, velY = centerVel.y; // Unpack centerVel into 2 vel axis
+            center.x += centerVel.x;
+            center.y += centerVel.y;
         }
     protected:
         Center center;
@@ -51,6 +56,8 @@ class Figure {
         double velY;
         double width;
         double height;
+    private:
+        Center centerVel;
 };
 class Circle : public Figure {
     private:
