@@ -4,27 +4,14 @@
 #include <cstdlib>
 #include <cstdio>
 
+#include "include/util.h"
+
 using namespace std;
 
 const int FPS = 60;
 const int SCREEN_W = 640;
 const int SCREEN_H = 480;
 
-struct Center {
-    double x;
-    double y;
-};
-
-struct Color {
-    Color(unsigned char pR = 255, unsigned char pG = 255, unsigned char pB = 255) {
-        r = pR;
-        g = pG;
-        b = pB;
-    };
-    unsigned char r;
-    unsigned char g;
-    unsigned char b;
-};
 struct Physics {
     static Center CollideBounds(double px, double py, double pvelX, double pvelY, double pwidth, double pheight) { // Returns desirable velocity
         Center pcenter;
@@ -42,7 +29,7 @@ struct Physics {
 class Figure {
     public:
         virtual void Draw() = 0;
-        virtual void Move() {
+        void Move() {
             centerVel = Physics::CollideBounds(center.x, center.y, velX, velY, width, height);
 
             velX = centerVel.x, velY = centerVel.y; // Unpack centerVel into 2 vel axis
@@ -73,7 +60,7 @@ class Circle : public Figure {
             velY = pVelY;
             color = pColor;
         }
-        void Draw() {
+        void Draw() override {
             al_draw_filled_circle(center.x, center.y, width, al_map_rgb(color.r, color.g, color.b) );
         }
 };
@@ -91,7 +78,7 @@ class Square : public Figure {
             velX = pvelX;
             velY = pvelY;
         }
-        void Draw() {
+        void Draw() override {
             al_draw_filled_rectangle(center.x - (width/2), center.y - (height/2), center.x + (width/2), center.y + (height/2), al_map_rgb( 0, 255, 0 ));
         }
 };
