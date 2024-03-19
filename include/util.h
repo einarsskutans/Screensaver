@@ -1,6 +1,10 @@
 #ifndef UTIL_H
 #define UTIL_H
 
+const int FPS = 60;
+const int SCREEN_W = 640;
+const int SCREEN_H = 480;
+
 struct Center {
     double x;
     double y;
