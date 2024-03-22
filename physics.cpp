@@ -1,4 +1,5 @@
 #include "include/physics.h"
+#include "include/figure.h"
 
 Center Physics::CollideBounds(double px, double py, double pvelX, double pvelY, double pwidth, double pheight) { // Returns desired velocity
     Center pcenter;

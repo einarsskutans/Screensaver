@@ -7,7 +7,6 @@ class Figure {
     public:
         virtual void Draw() = 0;
         void Move();
-    protected:
         Center center;
         double velX;
         double velY;

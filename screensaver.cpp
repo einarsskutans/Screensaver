@@ -1,4 +1,5 @@
 #include "include/screensaver.h"
+#include "include/physics.h"
 
 void Screensaver::Next() {
     for (int i = 0; i < 6; i++) {
