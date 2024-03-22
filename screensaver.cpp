@@ -1,6 +1,11 @@
 #include "include/screensaver.h"
 #include "include/physics.h"
 
+void Screensaver::Add(Figure* figure, int element) {
+    if (n < Screensaver::n) {
+        PFigures[element] = figure;
+    }
+}
 void Screensaver::Next() {
     for (int i = 0; i < 6; i++) {
         PFigures[i]->Move();

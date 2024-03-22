@@ -13,6 +13,8 @@
 using namespace std;
 
 Screensaver screensaver;
+
+
 void fps() {
     screensaver.Next();
 }
