@@ -6,14 +6,14 @@
 
 #include "include/util.h"
 #include "include/figure.h"
-#include "include/circle.h"
 #include "include/square.h"
 #include "include/screensaver.h"
 
 using namespace std;
 
 Screensaver screensaver;
-
+Square square{10, 10, 10, 10};
+Square *psquare = &square;
 
 void fps() {
     screensaver.Next();
@@ -29,6 +29,9 @@ int main(int argc, char **argv) {
         DestroyAllegro();
         return 1;
     }
+
+    screensaver.Add(psquare, 0);
+    cout << screensaver.PFigures;
 
     RunAllegro(&fps, &draw);
     DestroyAllegro();
