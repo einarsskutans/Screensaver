@@ -2,11 +2,11 @@
 #define PHYSICS_H
 
 #include "util.h"
-#include "square.h"
 #include "physics.h"
+#include "figure.h"
 
 struct Physics {
-    static Center CollideBounds(int px, int py, int pvelX, int pvelY, int pwidth, int pheight);
+    static Center CollideBounds(Figure* pfigure);
 };
 
 #endif

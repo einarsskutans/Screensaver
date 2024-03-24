@@ -1,16 +1,16 @@
 #include "include/physics.h"
 #include "include/figure.h"
-#include "include/square.h"
 
-Center Physics::CollideBounds(int px, int py, int pvelX, int pvelY, int pwidth, int pheight) { // Returns desired velocity
+Center Physics::CollideBounds(Figure* pfigure) { // Returns desired velocity
     Center pcenter;
-    pcenter.x = pvelX;
-    pcenter.y = pvelY;
-    if (px > SCREEN_W - pwidth/2 || px < 0 + pwidth/2) {
-        pcenter.x = -pvelX;
+    pcenter.x = pfigure->velX;
+    pcenter.y = pfigure->velY;
+    if (pfigure->center.x > SCREEN_W - pfigure->width/2 || pfigure->center.x < 0 + pfigure->width/2) {
+        pcenter.x = -pfigure->velX;
     }
-    if (py > SCREEN_H - pwidth/2 || py < 0 + pwidth/2) {
-        pcenter.y = -pvelY;
+    if (pfigure->center.y > SCREEN_H - pfigure->width/2 || pfigure->center.y < 0 + pfigure->width/2) {
+        pcenter.y = -pfigure->velY;
     }
     return pcenter;
 }
+

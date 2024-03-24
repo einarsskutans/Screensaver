@@ -10,7 +10,7 @@ Figure::~Figure() {
 
 void Figure::Draw() {}
 void Figure::Move() {
-    centerVel = Physics::CollideBounds(center.x, center.y, velX, velY, width, height);
+    centerVel = Physics::CollideBounds(this);
 
     velX = centerVel.x, velY = centerVel.y; // Unpack centerVel into 2 vel axis
     center.x += centerVel.x;
