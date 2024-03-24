@@ -12,8 +12,6 @@
 using namespace std;
 
 Screensaver screensaver;
-Square square{10, 10, 10, 10};
-Square *psquare = &square;
 
 void fps() {
     screensaver.Next();
@@ -30,7 +28,11 @@ int main(int argc, char **argv) {
         return 1;
     }
 
-    screensaver.Add(psquare);
+    // Adding some figures
+    for (int i = 0; i < 10; i++) {
+        Square square{30, 30, 5, 5};
+        screensaver.Add(&square);
+    }
 
     RunAllegro(&fps, &draw);
     DestroyAllegro();
