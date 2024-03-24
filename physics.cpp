@@ -2,7 +2,7 @@
 #include "include/figure.h"
 #include "include/square.h"
 
-Center Physics::CollideBounds(double px, double py, double pvelX, double pvelY, double pwidth, double pheight) { // Returns desired velocity
+Center Physics::CollideBounds(int px, int py, int pvelX, int pvelY, int pwidth, int pheight) { // Returns desired velocity
     Center pcenter;
     pcenter.x = pvelX;
     pcenter.y = pvelY;

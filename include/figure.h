@@ -8,10 +8,10 @@ class Figure {
         virtual void Draw() = 0;
         void Move();
         Center center;
-        double velX;
-        double velY;
-        double width;
-        double height;
+        int velX;
+        int velY;
+        int width;
+        int height;
     private:
         Center centerVel;
 };

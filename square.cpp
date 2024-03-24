@@ -2,10 +2,10 @@
 #include "include/util.h"
 
 void Square::Reset() {
-    center.x = SCREEN_W/2;
-    center.y = SCREEN_H/2;
+    center.x = width + (rand() % SCREEN_W - width);
+    center.y = height + (rand() % SCREEN_H - height);
 }
-Square::Square(double pwidth, double pheight, double pvelX, double pvelY) {
+Square::Square(int pwidth, int pheight, int pvelX, int pvelY) {
     Reset();
     width = pwidth;
     height = pheight;

@@ -15,7 +15,7 @@ class Square : public Figure {
     public:
         Color color;
         Square();
-        Square(double pwidth, double pheight, double pvelX, double pvelY);
+        Square(int pwidth, int pheight, int pvelX, int pvelY);
         void Draw();
 };
 

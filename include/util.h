@@ -6,8 +6,8 @@ const int SCREEN_W = 640;
 const int SCREEN_H = 480;
 
 struct Center {
-    double x;
-    double y;
+    int x;
+    int y;
 };
 
 struct Color {

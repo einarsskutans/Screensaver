@@ -6,7 +6,7 @@
 #include "physics.h"
 
 struct Physics {
-    static Center CollideBounds(double px, double py, double pvelX, double pvelY, double pwidth, double pheight);
+    static Center CollideBounds(int px, int py, int pvelX, int pvelY, int pwidth, int pheight);
 };
 
 #endif

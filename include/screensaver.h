@@ -19,6 +19,7 @@ class Screensaver {
         void Draw();
 
         std::vector <Figure*> PFigures;
+        void Print();
 };
 
 #endif

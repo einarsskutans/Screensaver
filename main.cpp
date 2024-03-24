@@ -28,11 +28,13 @@ int main(int argc, char **argv) {
         return 1;
     }
 
-    // Adding some figures
-    for (int i = 0; i < 10; i++) {
-        Square square{30, 30, 5, 5};
-        screensaver.Add(&square);
+    // Figures are added with rand velocity & rand starting position in "square.cpp"
+    for (int i = 1; i < 10; i++) {
+        Square* square = new Square(30, 30, 5, 5);
+        screensaver.Add(square);
     }
+
+    screensaver.Print();
 
     RunAllegro(&fps, &draw);
     DestroyAllegro();
