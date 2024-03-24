@@ -2,8 +2,8 @@
 #include "include/util.h"
 
 void Circle::Reset() {
-    center.x = SCREEN_W/2;
-    center.y = SCREEN_H/2;
+    center.x = 100 + rand()%200;
+    center.y = 100 + rand()%200;
 }
 Circle::Circle(double pRadius, double pVelX, double pVelY, Color pColor) {
     Reset();

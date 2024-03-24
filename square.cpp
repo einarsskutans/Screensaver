@@ -2,16 +2,17 @@
 #include "include/util.h"
 
 void Square::Reset() {
-    center.x = width + (rand() % SCREEN_W - width);
-    center.y = height + (rand() % SCREEN_H - height);
+    center.x = 100 + rand()%200;
+    center.y = 100 + rand()%200;
 }
-Square::Square(int pwidth, int pheight, int pvelX, int pvelY) {
+Square::Square(int pWidth, int pHeight, int pVelX, int pVelY, Color pColor) {
     Reset();
-    width = pwidth;
-    height = pheight;
-    velX = pvelX;
-    velY = pvelY;
+    width = pWidth;
+    height = pHeight;
+    velX = pVelX;
+    velY = pVelY;
+    color = pColor;
 }
 void Square::Draw() {
-    al_draw_filled_rectangle(center.x - (width/2), center.y - (height/2), center.x + (width/2), center.y + (height/2), al_map_rgb( 0, 255, 0 ));
+    al_draw_filled_rectangle(center.x - (width/2), center.y - (height/2), center.x + (width/2), center.y + (height/2), al_map_rgb(color.r, color.g, color.b));
 }

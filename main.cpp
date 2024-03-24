@@ -29,9 +29,13 @@ int main(int argc, char **argv) {
     }
 
     // Figures are added with rand velocity & rand starting position in "square.cpp"
-    for (int i = 1; i < 10; i++) {
-        Square* square = new Square(30, 30, 5, 5);
+    for (int i = 1; i < 5; i++) {
+        Color* color1 = new Color(rand()%255, rand()%255, rand()%255);
+        Color* color2 = new Color(rand()%255, rand()%255, rand()%255);
+        Square* square = new Square(30, 30, 1 + rand()%10, 1 + rand()%10, *color1);
+        Circle* circle = new Circle(15, 1 + rand()%10, 1 + rand()%10, *color2);
         screensaver.Add(square);
+        screensaver.Add(circle);
     }
 
     screensaver.Print();
