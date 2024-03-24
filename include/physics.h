@@ -7,6 +7,7 @@
 
 struct Physics {
     static Center CollideBounds(Figure* pfigure);
+    static Center CollideFigure(Figure* pfigure1, Figure* pfigure2);
 };
 
 #endif
