@@ -30,8 +30,7 @@ int main(int argc, char **argv) {
         return 1;
     }
 
-    screensaver.Add(psquare, 0);
-    cout << screensaver.PFigures;
+    screensaver.Add(psquare);
 
     RunAllegro(&fps, &draw);
     DestroyAllegro();

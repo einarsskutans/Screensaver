@@ -5,6 +5,7 @@
 #include <windows.h>
 #include <cstdlib>
 #include <cstdio>
+#include <vector>
 
 #include "util.h"
 #include "figure.h"
@@ -13,13 +14,11 @@
 
 class Screensaver {
     public:
-        void Add(Figure* figure, int element);
+        void Add(Figure* figure);
         void Next();
         void Draw();
 
-        const static int n = 50;
-        typedef Figure* PFigure;  
-        PFigure PFigures[n] = {};
+        std::vector <Figure*> PFigures;
 };
 
 #endif
