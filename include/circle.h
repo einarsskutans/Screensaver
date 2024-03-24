@@ -16,6 +16,7 @@ class Circle : public Figure {
         Color color;
         Circle();
         Circle(double pRadius, double pVelX, double pVelY, Color pColor);
+        ~Circle();
         void Draw();
 };
 

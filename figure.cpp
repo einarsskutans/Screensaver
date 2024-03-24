@@ -1,6 +1,12 @@
+#include <iostream>
+
 #include "include/figure.h"
 #include "include/util.h"
 #include "include/physics.h"
+
+Figure::~Figure() {
+    std::cout << "\nDestructor called " << this;
+}
 
 void Figure::Draw() {}
 void Figure::Move() {

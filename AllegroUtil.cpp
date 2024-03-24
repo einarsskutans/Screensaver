@@ -1,5 +1,6 @@
-#include "include/AllegroUtil.hpp"
 #include <iostream>
+
+#include "include/AllegroUtil.hpp"
 
 using namespace std;
 

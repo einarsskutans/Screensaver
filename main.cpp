@@ -42,5 +42,6 @@ int main(int argc, char **argv) {
 
     RunAllegro(&fps, &draw);
     DestroyAllegro();
+
     return 0;
 }

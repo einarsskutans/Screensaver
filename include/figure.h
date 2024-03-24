@@ -5,6 +5,8 @@
 
 class Figure {
     public:
+        ~Figure();
+
         virtual void Draw() = 0;
         void Move();
         Center center;

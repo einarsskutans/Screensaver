@@ -18,7 +18,7 @@ void Screensaver::Draw() {
     }
 }
 void Screensaver::Print() {
-    std::cout << " | ";
+    std::cout << "\n| ";
     for (Figure* PFigure : PFigures) {
         std::cout << PFigure << " | ";
     }
