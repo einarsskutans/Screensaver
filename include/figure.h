@@ -1,6 +1,7 @@
 #ifndef FIGURE_H
 #define FIGURE_H
 
+#include <vector>
 #include "util.h"
 
 class Figure {
@@ -8,7 +9,7 @@ class Figure {
         ~Figure();
 
         virtual void Draw() = 0;
-        void Move();
+        void Move(std::vector <Figure*> PFigures);
         Center center;
         int velX;
         int velY;

@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 
 #include "include/figure.h"
 #include "include/util.h"
@@ -10,11 +11,15 @@ Figure::~Figure() {
 }
 
 void Figure::Draw() {}
-void Figure::Move() {
-    centerVel = Physics::CollideBounds(this);
-    centerVel = Physics::CollideFigure(this, );
+void Figure::Move(std::vector <Figure*> PFigures) {
+    Physics::CollideBounds(this);
 
-    velX = centerVel.x, velY = centerVel.y; // Unpack centerVel into 2 vel axis
-    center.x += centerVel.x;
-    center.y += centerVel.y;
+    for (int j = 0; j < PFigures.size(); j++) {
+        for (int i = 0; i < PFigures.size(); i++) {
+            Physics::CollideFigure(PFigures[j], PFigures[i]);
+        }
+    }
+
+    center.x += velX;
+    center.y += velY;
 }

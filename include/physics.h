@@ -6,8 +6,8 @@
 #include "figure.h"
 
 struct Physics {
-    static Center CollideBounds(Figure* pfigure);
-    static Center CollideFigure(Figure* pfigure1, Figure* pfigure2);
+    static void CollideBounds(Figure* pfigure);
+    static void CollideFigure(Figure* pfigure1, Figure* pfigure2);
 };
 
 #endif

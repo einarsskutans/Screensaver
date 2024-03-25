@@ -8,7 +8,7 @@ void Screensaver::Add(Figure* figure) {
 }
 void Screensaver::Next() {
     for (int i = 0; i < PFigures.size(); i++) {
-        PFigures[i]->Move();
+        PFigures[i]->Move(PFigures);
     }
 }
 void Screensaver::Draw() {
