@@ -19,5 +19,5 @@ void Circle::Reset() {
     center.y = 100 + rand()%200;
 }
 void Circle::Draw() {
-    al_draw_filled_circle(center.x, center.y, width, al_map_rgb(color.r, color.g, color.b));
+    al_draw_filled_circle(center.x, center.y, width/2, al_map_rgb(color.r, color.g, color.b));
 }
