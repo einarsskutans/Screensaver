@@ -28,18 +28,18 @@ int main(int argc, char **argv) {
         return 1;
     }
     // Figures are added with rand velocity & rand starting position in "square.cpp"
-    for (int i = 1; i < 7; i++) {
-        
+    for (int i = 1; i < 10; i++) {
         Color* color1 = new Color(rand()%255, rand()%255, rand()%255);
         Color* color2 = new Color(rand()%255, rand()%255, rand()%255);
-        Square* square = new Square(100, 100, 1 + rand()%10, 1 + rand()%10, *color1);
-        Circle* circle = new Circle(15, 1 + rand()%10, 1 + rand()%10, *color2);
+        Square* square = new Square(50, 50, 1 + rand()%10, 1 + rand()%10, *color1);
+        Circle* circle = new Circle(25, 25 + rand()%10, 1 + rand()%10, *color2);
         screensaver.Add(square);
         screensaver.Add(circle);
     }
 
     screensaver.Print();
 
+    al_set_window_title(alDisplay, "Screensaver");
     RunAllegro(&fps, &draw);
     DestroyAllegro();
 

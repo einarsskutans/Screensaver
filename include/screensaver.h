@@ -17,6 +17,9 @@ class Screensaver {
         void Add(Figure* figure);
         void Next();
         void Draw();
+        void fps();
+        void draw();
+        int Init();
 
         std::vector <Figure*> PFigures;
         void Print();
