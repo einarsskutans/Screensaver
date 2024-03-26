@@ -14,11 +14,16 @@ void Figure::Draw() {}
 void Figure::Move(std::vector <Figure*> PFigures) {
     Physics::CollideBounds(this);
 
-    for (int j = 0; j < PFigures.size(); j++) {
-        for (int i = 0; i < PFigures.size(); i++) {
-            Physics::CollideFigure(PFigures[j], PFigures[i]);
+    for (int i = 0; i < PFigures.size(); i++) {
+        for (Figure* pfigure : PFigures) {
+            if (pfigure != PFigures[i]) {
+                Physics::CollideFigure(pfigure, PFigures[i]);
+            }
         }
     }
+
+    //Physics::CollideFigure(PFigures[2], PFigures[0]);
+    //Physics::CollideFigure(PFigures[0], PFigures[2]);
 
     center.x += velX;
     center.y += velY;
