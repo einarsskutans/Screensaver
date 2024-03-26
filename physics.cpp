@@ -12,13 +12,19 @@ void Physics::CollideBounds(Figure* pfigure) {
     }
 }
 void Physics::CollideFigure(Figure* pfigure1, Figure* pfigure2) { // This is tragic
+    if (pfigure1->width < 2) {
+        pfigure1->width = 100;
+    }
+    if (pfigure1->height < 2) {
+        pfigure1->height = 100;
+    }
     if ( // Some conditionals for collision
         (pfigure1->center.x + pfigure1->width/2 >= pfigure2->center.x - pfigure2->width/2) &&
         (pfigure1->center.x - pfigure1->width/2 <= pfigure2->center.x + pfigure2->width/2) &&
         (pfigure1->center.y + pfigure1->height/2 >= pfigure2->center.y - pfigure2->height/2) &&
         (pfigure1->center.y - pfigure1->height/2 <= pfigure2->center.y + pfigure2->height/2)
     ) {
-        pfigure1->velX = -pfigure1->velX;
-        pfigure1->velY = -pfigure1->velY;
+        pfigure1->width--;
+        pfigure1->height--;
     }
 }
